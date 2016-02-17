@@ -11,11 +11,6 @@ except:
     sys.path.append(filepath+'/..')
     import pybagel
 
-import pytest
-import time
-import json
-
-
 my_device_config = {
     "product_id": "TestAlanProduct",
     "product_key": "e1364fcb287215e8804b7185193ffb294188321f50be996df16904bccfcbd92f",
