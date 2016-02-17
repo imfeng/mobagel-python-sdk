@@ -31,7 +31,7 @@ There is only one function call 'report' in BagelDevice class, You need to pass 
 ``` Python
 import pybagel
 ```
-``` Java
+```
 my_device_config = {
     "product_id": <#product_id#>,
     "product_key": <#product_keyy#>,
