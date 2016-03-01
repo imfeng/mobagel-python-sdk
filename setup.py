@@ -13,9 +13,9 @@ readme_filename = os.path.join(this_dir, 'README.md')
 requirements_filename = os.path.join(this_dir, 'requirements.txt')
 
 PACKAGE_NAME = 'mobagel-python-sdk'
-PACKAGE_VERSION = '0.1.1'
+PACKAGE_VERSION = '0.2.0'
 PACKAGE_AUTHOR = 'MoBagel'
-PACKAGE_AUTHOR_EMAIL = ''
+PACKAGE_AUTHOR_EMAIL = 'us@mobagel.com'
 
 PACKAGE_URL = "https://github.com/MOBAGEL/mobagel-python-sdk"
 
