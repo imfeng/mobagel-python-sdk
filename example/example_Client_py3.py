@@ -12,11 +12,11 @@ except:
     import pybagel
 
 my_device_config = {
-    "product_id": "TestAlanProduct",
-    "product_key": "e1364fcb287215e8804b7185193ffb294188321f50be996df16904bccfcbd92f",
-    "device_id": "56c43ae3f8e9d3a12f8b4567",
-    "device_key": "0be77e401484c3f6929783f023a2afd2ae45e5b917214c21142ee6e8ee15551b"
-    }
+        "product_id": "MoBagelSDK",
+         "product_key": "1111111111222222222233333333334444444444555555555566666666667777",
+         "device_id": "111111111122222222223333",
+         "device_key": "1111111111222222222233333333334444444444555555555566666666667777"
+        }
 
 myclient = pybagel.Client(device_config=my_device_config)
 
