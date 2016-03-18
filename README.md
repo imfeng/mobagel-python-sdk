@@ -4,55 +4,78 @@
 
 MoBagel is a real-time cloud analytics platform that helps IoT companies monitor and analyze hardware usage, speed up research and development, forecast sales and marketing strategies, and proactively engage with customers to prevent product returns. As a result, companies can also save up to millions in cost reductions.
 
-## Usage
+## Installation
 
-To run the example project, clone the repo, and run pip install from the Example directory first.
 
-## How it work!
+To run the example project, clone the repo, or run pip install from the Example directory first.
 
-1. Register in our dashboard ! (You can visit [https://app.mobagel.com](https://app.mobagel.com))
-2. Initialize BagelDevice object
-3. Fill with your device information 
-    * product_id
-    * product_key
-    * device_id
-    * device_key
-4. Start report!!  
-There is only one function call 'report' in BagelDevice class, You need to pass your report data (HashMap<String, Object>) and handle data response
+* Install by PyPI
+	`$ pip install mobagel-python-sdk`
 
-| Parameter | 	Type | 	Description |  
-| --- | 	--- | 	--- | 
-| state(mandatory) | string | State of device |  
-| latlng(optional) | string | Latitude and longitude of device format latitude:longitude |  
-| c_xxx | string/number | You can put your custom parameter with prefix c_ |  
 
-## Sample code 
+## Getting Started
 
-``` Python
-import pybagel
-```
-```
-my_device_config = {
-    "product_id": <#product_id#>,
-    "product_key": <#product_keyy#>,
-    "device_id": <#device_id#>,
-    "device_key": <#device_key#>
+#### - Creating an account
+
+If you do not have an account, please create an account [here](https://app.mobagel.com/signup). After you create an account, you will be directed to the dashboard.
+
+#### - Creating a new product
+To use MoBagel, you first have to create a **product**, which is essentially a group of same **devices**. You can create new products in the dashboard.
+
+For example:
+
+[Product Name] iBulb
+[Product Brief] Smart light bulb
+[Product Description] Wi-Fi connected light bulb with motion sensors and temperature sensors.
+After you create a **product**, the system will generate a **product_key**, which will be used to create  **devices** later on.
+
+#### - Register your first device
+Once you generated a product_key from the dashboard, you can use the product_key and registerDevice function to register a device in your application.
+
+	## import package
+	import pybagel
+
+    ## create mobagel object
+    client = pybagel.Client(product_key="1111111111222222222233333333334444444444555555555566666666667777")
+
+    ## register a device
+	device_key = c.registerDevice()
+
+
+#### - Connecting custom properties or events
+In your device application, you will need to prepare your report before sending it to MoBagel.
+
+* Determining different states of your devices to send along with your report
+
+		# example states
+
+		"state": "normal"
+		"state": "error"
+
+* Adding custom properties or events with a key beginning with c_
+
+		# example custom properties or events
+
+		"c_temperature": 30
+		"c_event": "turned_on"
+* Deciding when to send reports (time, frequency, events)
+
+
+#### - Sending first report
+Once you connect the sensor properties, you can generate a report with the sendReport function.
+
+    # sample report
+    report_content = {
+        "state": "normal",
+        "c_humidity": 30,
+        "c_function": "humidify" ,
+        "c_temperature": 80
     }
 
-myclient = pybagel.Client(device_config=my_device_config)
+	client.sendReport(device_key, report_content)
 
-print myclient.getTime()
 
-report_content = {
-                    "data": {
-                        "state": "normal",   ## state field is necessary
-                        }
-                 }
 
-ret = myclient.sendReport(report_content)
-
-print ret
-```
 
 ## More
 You can visit our home page and get more information.

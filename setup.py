@@ -13,7 +13,7 @@ readme_filename = os.path.join(this_dir, 'README.md')
 requirements_filename = os.path.join(this_dir, 'requirements.txt')
 
 PACKAGE_NAME = 'mobagel-python-sdk'
-PACKAGE_VERSION = '0.2.0'
+PACKAGE_VERSION = '1.0.0'
 PACKAGE_AUTHOR = 'MoBagel'
 PACKAGE_AUTHOR_EMAIL = 'us@mobagel.com'
 
@@ -22,7 +22,7 @@ PACKAGE_URL = "https://github.com/MOBAGEL/mobagel-python-sdk"
 PACKAGE_DOWNLOAD_URL = \
     'https://github.com/MOBAGEL/mobagel-python-sdk/tarball/' + PACKAGE_VERSION
 
-PACKAGES = ["pybagel", "pybagel.py2", "pybagel.py3"]
+PACKAGES = ["pybagel"]
 PACKAGE_DATA = {
 }
 

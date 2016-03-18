@@ -16,18 +16,7 @@ class Test_Client:
 
     @pytest.fixture()
     def init(self):
-
-        my_device_config = {
-        "product_id": "MoBagelSDK",
-         "product_key": "1111111111222222222233333333334444444444555555555566666666667777",
-         "device_id": "111111111122222222223333",
-         "device_key": "1111111111222222222233333333334444444444555555555566666666667777"
-        }
-
-        self.myclient = pybagel.Client(device_config=my_device_config)
-
-
-
+        self.myclient = pybagel.Client(product_key="1111111111222222222233333333334444444444555555555566666666667777")
 
     #=========================================
     ### Test pybagel.Client() Time METHOD###
@@ -35,7 +24,7 @@ class Test_Client:
     @pytest.mark.usefixtures("init")
     def test_getTime_type(self):
         ret = self.myclient.getTime()
-        assert type(ret.decode()) == str
+        assert type(ret) == str
 
 
     @pytest.mark.usefixtures("init")
@@ -44,17 +33,25 @@ class Test_Client:
         assert abs(int(ret) - time.time()) < 36000000
 
 
-
-
     #=========================================
     ### Test pybagel.Client() sendReport METHOD###
 
     @pytest.mark.usefixtures("init")
     def test_sendReport_response201(self):
         report_content = {
-                            "data": {
-                                "state": "normal",
-                                }
+                            "state": "normal",
+                            "c_customization": "py2test"
                          }
-        ret = self.myclient.sendReport(report_content)
-        assert json.loads(ret.decode())['code'] == "201"
+        ret = self.myclient.sendReport(device_key="1111111111222222222233333333334444444444555555555566666666667777",
+                                       content=report_content)
+        assert "data" in ret
+        assert "timestamp" in ret
+
+
+    #=========================================
+    ### Test pybagel.Client() registerDevice METHOD###
+    @pytest.mark.usefixtures("init")
+    def test_registerDevice(self):
+        new_device_key = self.myclient.registerDevice()
+        assert (type(new_device_key) == str)
+
