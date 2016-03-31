@@ -12,11 +12,6 @@ class Client:
         self.http_client = httplib2.Http()
         self.product_key = product_key
 
-    def getTime(self):
-        resp, content = self.http_client.request(info.BAGEL_URL_BASE + "/time", "GET")
-        if resp['status'] != "200":
-            raise BagelExceptions.HttpsResponseException("get Time HTTPS response Error", resp, content)
-        return content.decode('utf-8')
 
     def registerDevice(self):
         headers = {
@@ -24,18 +19,18 @@ class Client:
             'Content-Type' : "application/json"
         }
         url = info.BAGEL_URL_BASE + "/register"
-
-        resp, content = self.http_client.request(url, 'POST', headers=headers, body=json.dumps({}))
-        if resp['status'] != "200":
-            raise BagelExceptions.HttpsResponseException("regist device HTTPS response Error", resp, content)
-        return json.loads(content.decode('utf-8'))["data"]
+        response, content = self.http_client.request(url, 'POST', headers=headers, body=json.dumps({}))
+        if int(response['status'])/100 != 2:
+            raise BagelExceptions.HttpsResponseException("Error: ", response, content)
+        return response['status'], content
 
     def sendReport(self, device_key, content):
         headers = {
             'Device-Key': device_key,
             'Content-Type' : "application/json"
         }
-        url = info.BAGEL_URL_BASE + "/reports"
+        url = info.BAGEL_URL_BASE + "/report"
         response, content = self.http_client.request(url, 'POST', headers=headers, body=json.dumps(content))
-
-        return content.decode('utf-8')
+        if int(response['status'])/100 != 2:
+            raise BagelExceptions.HttpsResponseException("Error: ", response, content)
+        return response['status'], content

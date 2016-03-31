@@ -15,7 +15,7 @@ except:
 c = pybagel.Client(product_key="1111111111222222222233333333334444444444555555555566666666667777")
 
 # register a device_key by client
-new_device_key = c.registerDevice()
+code, content = c.registerDevice()
 
 # return a new device_key
-print(new_device_key)
+print("Response code: ", code, " ,content:", content)
