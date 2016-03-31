@@ -6,11 +6,10 @@ MoBagel is a real-time cloud analytics platform that helps IoT companies monitor
 
 ## Installation
 
-To run the example project, clone the repo, or run pip install from the Example directory first.
-
-* Install by PyPI
-	`$ pip install mobagel-python-sdk`
-
+To run the example project, clone the repo, or run [pip](https://pip.pypa.io/en/stable/) install from the Example directory first.  
+```shell
+	$ pip install mobagel-python-sdk
+```
 
 ## Getting Started
 
@@ -31,16 +30,15 @@ After you create a **product**, the system will generate a **product_key**, whic
 #### - Register your first device
 Once you generated a product_key from the dashboard, you can use the product_key and registerDevice function to register a device in your application.
 
-	## import package
+	# Import package
 	import pybagel
 
-	product_key = <YOUR_PRODUCT_KEY>
+	product_key = "YOUR_PRODUCT_KEY"
 	# Initialize a Client Instance by product_key
 	client = pybagel.Client(product_key=product_key)
 	
 	# Register a device_key by client
-	code, content = client.registerDevice()
-	response = json.loads(content.decode('utf-8'))
+	client.registerDevice()
 
 
 #### - Connecting custom properties or events
@@ -77,13 +75,12 @@ Once you connect the sensor properties, you can generate a report with the sendR
 	code, content = client.sendReport(
 	    device_key=device_key,
 	    content=content
-	    )
-
-	client.sendReport(device_key, report_content)
+	)
+	client.sendReport(device_key, content)
 
 ## Full sample
 
-	__author__ = "MoBagel"
+	__author__ = "MoBagel Inc."
 	
 	import json
 	import pybagel
