@@ -6,7 +6,6 @@ MoBagel is a real-time cloud analytics platform that helps IoT companies monitor
 
 ## Installation
 
-
 To run the example project, clone the repo, or run pip install from the Example directory first.
 
 * Install by PyPI
@@ -35,11 +34,13 @@ Once you generated a product_key from the dashboard, you can use the product_key
 	## import package
 	import pybagel
 
-    ## create mobagel object
-    client = pybagel.Client(product_key="1111111111222222222233333333334444444444555555555566666666667777")
-
-    ## register a device
-	device_key = c.registerDevice()
+	product_key = <YOUR_PRODUCT_KEY>
+	# Initialize a Client Instance by product_key
+	client = pybagel.Client(product_key=product_key)
+	
+	# Register a device_key by client
+	code, content = client.registerDevice()
+	response = json.loads(content.decode('utf-8'))
 
 
 #### - Connecting custom properties or events
@@ -47,14 +48,14 @@ In your device application, you will need to prepare your report before sending 
 
 * Determining different states of your devices to send along with your report
 
-		# example states
+		# Example states
 
 		"state": "normal"
 		"state": "error"
 
 * Adding custom properties or events with a key beginning with c_
 
-		# example custom properties or events
+		# Example custom properties or events
 
 		"c_temperature": 30
 		"c_event": "turned_on"
@@ -64,15 +65,63 @@ In your device application, you will need to prepare your report before sending 
 #### - Sending first report
 Once you connect the sensor properties, you can generate a report with the sendReport function.
 
-    # sample report
-    report_content = {
-        "state": "normal",
-        "c_humidity": 30,
-        "c_function": "humidify" ,
-        "c_temperature": 80
-    }
+    # Sample report
+	device_key = "YOUR_DEVICE_KEY"
+	content = {
+	            "state": "Put your state here!",
+	            "c_customization" : "python_sdk_test",
+	            "c_develop_zone" : "PythonSDK"
+	        }
+	
+	# SendReport
+	code, content = client.sendReport(
+	    device_key=device_key,
+	    content=content
+	    )
 
 	client.sendReport(device_key, report_content)
+
+## Full sample
+
+	__author__ = "MoBagel"
+	
+	import json
+	import pybagel
+	from pprint import pprint
+	
+	print "\nThis is MoBagel Python SDK sample, you can learn how to `register device` and `report state` in this sample code\n"
+	
+	product_key = "1111111111222222222233333333334444444444555555555566666666667777"
+	# Initialize a Client Instance by product_key
+	client = pybagel.Client(product_key=product_key)
+	
+	print "Register device..."
+	# register a device_key by client
+	code, content = client.registerDevice()
+	response = json.loads(content.decode('utf-8'))
+	print "Data response: "
+	pprint(response)
+	
+	print "\n========================================================\n"
+	
+	print "Send report..."
+	
+	device_key = response["data"]["attributes"]["key"];
+	content = {
+	            "state": "Put your state here!",
+	            "c_customization" : "python_sdk_test",
+	            "c_develop_zone" : "PythonSDK"
+	        }
+	
+	# SendReport
+	code, content = client.sendReport(
+	    device_key=device_key,
+	    content=content
+	    )
+	# return report_id and report_timestamp
+	response = json.loads(content.decode('utf-8'))
+	print "Data response: "
+	pprint(response)
 
 
 
