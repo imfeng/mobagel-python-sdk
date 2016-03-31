@@ -5,8 +5,17 @@
 MoBagel is a real-time cloud analytics platform that helps IoT companies monitor and analyze hardware usage, speed up research and development, forecast sales and marketing strategies, and proactively engage with customers to prevent product returns. As a result, companies can also save up to millions in cost reductions.
 
 ## Installation
-
-To run the example project, clone the repo, or run [pip](https://pip.pypa.io/en/stable/) install from the Example directory first.  
+Before run mobagel-python-sdk, you need to install [pip](https://pip.pypa.io/en/stable/) first.
+### pip (Mac OS X)
+```shell
+	$ sudo easy_install pip
+```
+### pip (Ubuntu 14.04)
+```shell
+	$ sudo apt-get install python-pip python-dev build-essential 
+	$ sudo pip install --upgrade pip 
+```
+### mobagel-python-sdk
 ```shell
 	$ pip install mobagel-python-sdk
 ```
