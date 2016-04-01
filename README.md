@@ -22,9 +22,6 @@ Before run mobagel-python-sdk, you need to install [pip](https://pip.pypa.io/en/
 
 ## Getting Started
 
-You can see examples at github: /mobagel-python-sdk/example/
-[click me](https://github.com/MoBagel/mobagel-python-sdk/tree/master/example)
-
 #### - Creating an account
 
 If you do not have an account, please create an account [here](https://app.mobagel.com/signup). After you create an account, you will be directed to the dashboard.
@@ -95,6 +92,9 @@ Once you connect the sensor properties, you can generate a report with the sendR
 	client.sendReport(device_key, content)
 
 ## Full sample
+You can see example codes at github: /mobagel-python-sdk/example/
+[click me](https://github.com/MoBagel/mobagel-python-sdk/tree/master/example)
+
 
 	__author__ = "MoBagel Inc."
 	
