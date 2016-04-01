@@ -22,6 +22,9 @@ Before run mobagel-python-sdk, you need to install [pip](https://pip.pypa.io/en/
 
 ## Getting Started
 
+You can see examples at github: /mobagel-python-sdk/example/
+[click me](https://github.com/MoBagel/mobagel-python-sdk/tree/master/example)
+
 #### - Creating an account
 
 If you do not have an account, please create an account [here](https://app.mobagel.com/signup). After you create an account, you will be directed to the dashboard.
@@ -41,13 +44,17 @@ Once you generated a product_key from the dashboard, you can use the product_key
 
 	# Import package
 	import pybagel
+	import json
 
 	product_key = "YOUR_PRODUCT_KEY"
 	# Initialize a Client Instance by product_key
 	client = pybagel.Client(product_key=product_key)
 	
 	# Register a device_key by client
-	client.registerDevice()
+	code, content = client.registerDevice()
+	response = json.loads(content.decode('utf-8'))
+	device_key = response["data"]["attributes"]["key"];
+	# Save device_key
 
 
 #### - Connecting custom properties or events

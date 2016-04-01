@@ -25,7 +25,7 @@ class Test_Client:
     def test_sendReport_response201(self):
         report_content = {
                             "state": "normal",
-                            "c_customization": "py2test"
+                            "c_customization": "py3test"
                          }
         ret = self.myclient.sendReport(device_key="1111111111222222222233333333334444444444555555555566666666667777",
                                        content=report_content)

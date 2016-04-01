@@ -19,10 +19,10 @@ class Client:
             'Content-Type' : "application/json"
         }
         url = info.BAGEL_URL_BASE + "/register"
-        response, content = self.http_client.request(url, 'POST', headers=headers, body=json.dumps({}))
-        if int(response['status'])/100 != 2:
-            raise BagelExceptions.HttpsResponseException("Error: ", response, content)
-        return response['status'], content
+        _response, _content = self.http_client.request(url, 'POST', headers=headers, body=json.dumps({}))
+        if int(int(_response['status'])/100) != 2:
+            raise BagelExceptions.HttpsResponseException("Error: ", _response, _content)
+        return _response['status'], _content
 
     def sendReport(self, device_key, content):
         headers = {
@@ -30,7 +30,10 @@ class Client:
             'Content-Type' : "application/json"
         }
         url = info.BAGEL_URL_BASE + "/report"
-        response, content = self.http_client.request(url, 'POST', headers=headers, body=json.dumps(content))
-        if int(response['status'])/100 != 2:
-            raise BagelExceptions.HttpsResponseException("Error: ", response, content)
-        return response['status'], content
+        _response, _content = self.http_client.request(url, 'POST', headers=headers, body=json.dumps(content))
+
+        # Check Response 201:
+        if int(int(_response['status'])/100) != 2:
+            raise BagelExceptions.HttpsResponseException("Response Status Not 201", _response, _content)
+
+        return _response['status'], _content
