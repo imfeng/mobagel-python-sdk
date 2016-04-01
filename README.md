@@ -78,7 +78,7 @@ Once you connect the sensor properties, you can generate a report with the sendR
 
     # Sample report
 	device_key = "YOUR_DEVICE_KEY"
-	content = {
+	report_content = {
 	            "state": "Put your state here!",
 	            "c_customization" : "python_sdk_test",
 	            "c_develop_zone" : "PythonSDK"
@@ -87,7 +87,7 @@ Once you connect the sensor properties, you can generate a report with the sendR
 	# SendReport
 	code, content = client.sendReport(
 	    device_key=device_key,
-	    content=content
+	    content=report_content
 	)
 	client.sendReport(device_key, content)
 
