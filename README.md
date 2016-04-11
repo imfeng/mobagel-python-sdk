@@ -17,7 +17,7 @@ Before run mobagel-python-sdk, you need to install [pip](https://pip.pypa.io/en/
 ```
 ### mobagel-python-sdk
 ```shell
-	$ pip install mobagel-python-sdk
+	$ sudo pip install mobagel-python-sdk
 ```
 
 ## Getting Started
