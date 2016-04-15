@@ -23,7 +23,7 @@ device_key = "1111111111222222222233333333334444444444555555555566666666667777"
 
 # set Content:
 content={
-            "state": "Put your state here!",
+            "state": "Normal",
             "c_customization" : "python_sdk_test",
             "c_develop_zone" : "PythonSDK"
 }
