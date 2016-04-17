@@ -1,8 +1,9 @@
 Readme:
+=
 Update mobagel-python-sdk Through PYPI
 =
 * Update Package Version
-	In `/setup.py` modify **PACKAGE_VERSION**
+	* In `/setup.py` modify **PACKAGE_VERSION**
 ```
 PACKAGE_NAME = 'mobagel-python-sdk'
 PACKAGE_VERSION = '$YOUR_NEW_VERSION_NUMBER'
@@ -15,15 +16,17 @@ PACKAGE_AUTHOR = 'MoBagel'
 ![](http://i.imgur.com/7QhrQhs.png)
 	* Enter `python setup.py check`
 ![](http://i.imgur.com/voliHab.png)
-	`running check`
+	Expected output: `running check`
 
 * Make the package: `python setup.py sdist`
 ![](http://i.imgur.com/CY7StJN.png)
 
 * Upload the package to PYPI
 	* You Need an PYPI account. (Skip this step if you have one.)
+
 	Register here:
 	https://pypi.python.org/pypi?%3Aaction=register_form
+
 	Contact to Mobagel and Join this SDK project in PYPI:
 	E-mail: us@mobagel.com
 	* Use this command in Terminal to upload: `
