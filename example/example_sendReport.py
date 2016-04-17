@@ -23,15 +23,17 @@ device_key = "1111111111222222222233333333334444444444555555555566666666667777"
 
 # set Content:
 content={
-            "state": "Normal",
+            "state": "normal", # valid state: "normal" or "state"
             "c_customization" : "python_sdk_test",
             "c_develop_zone" : "PythonSDK"
+            # Custom properties should be created in the MoBagel dashboard
 }
 
 # SendReport
 code, ret = c.sendReport(
     device_key = device_key,
     content = content,
+
 )
 
 # return report_status (success:201) and report_data
